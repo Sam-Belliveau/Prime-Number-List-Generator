@@ -1,10 +1,12 @@
 #include <iostream>
 #include <fstream>
+#include <cmath>
 #include <vector>
 
 typedef unsigned long long NUM; // 64 Bit Number Support
 
 const NUM limit = 34359738368; // Generate Up to
+const NUM sLimit = sqrt(limit); // Generate Up to
 std::vector<bool> list(limit); // Vectors Are Formated In Optimal Way
 
 int main()
@@ -20,9 +22,7 @@ int main()
     // You can see progress in an app like cheat engine
     // Faster that std::cout or printf
     std::cout << "Follow Progress At " << &i << std::endl;
-
-    // Start Loop
-    for(; i < limit; i++)
+    for(i = 2; i < sLimit; i++)
     {
         if(list[i] == false) // Prime Number
         {
@@ -34,6 +34,14 @@ int main()
             {
                 list[j] = true; // Mark that as not prime
             }
+        }
+    }
+    for(i = sLimit; i < limit; i++)
+    {
+        if(list[i] == false) // Prime Number
+        {
+            // Output Prime
+            primes << i << std::endl;
         }
     }
 
